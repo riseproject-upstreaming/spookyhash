@@ -40,6 +40,7 @@ jobs:
           CIBW_TEST_EXTRAS: test
           CIBW_TEST_SOURCES: tests/
           CIBW_TEST_COMMAND: pytest .
+          CIBW_ENVIRONMENT: ${{ matrix.os == 'ubuntu-24.04-riscv' && 'PIP_EXTRA_INDEX_URL=https://pypi.riseproject.dev/simple PIP_PREFER_BINARY=true' || '' }}
           CIBW_TEST_ENVIRONMENT: ${{ matrix.os == 'ubuntu-24.04-riscv' && 'PIP_EXTRA_INDEX_URL=https://pypi.riseproject.dev/simple PIP_PREFER_BINARY=true' || '' }}
 
       - uses: actions/upload-artifact@v7
